@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>.ghc Graphic Files</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>.ghc Graphic Files Manager</h1>
+            <div class="controls">
+                <button id="btn-load-ghc">Load .ghc</button>
+                <button id="btn-save-ghc">Save .ghc</button>
+                <button id="btn-import-excel">Import Excel</button>
+                <input type="file" id="file-excel" accept=".xlsx, .xls" style="display: none;">
+            </div>
+        </header>
+
+        <main>
+            <div class="editor-section">
+                <h2>Data Editor</h2>
+                <div id="data-table-container">
+                    <table id="data-table">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Value</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button id="btn-add-row">+ Add Row</button>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h2>Chart Preview</h2>
+                <canvas id="myChart"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script src="./node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="./node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="renderer.js"></script>
+</body>
+</html>
