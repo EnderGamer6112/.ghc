@@ -11,10 +11,12 @@ const btnImportExcel = document.getElementById('btn-import-excel');
 const fileExcel = document.getElementById('file-excel');
 const btnSaveGhc = document.getElementById('btn-save-ghc');
 const btnLoadGhc = document.getElementById('btn-load-ghc');
+const btnExportPng = document.getElementById('btn-export-png');
+const btnExportSvg = document.getElementById('btn-export-svg');
 const ctx = document.getElementById('myChart').getContext('2d');
 
 // Initialize
-function init() {
+function init() {    
     renderTable();
     initChart();
     setupEventListeners();
@@ -48,6 +50,9 @@ function setupEventListeners() {
             updateChart();
         }
     });
+
+    btnExportPng.addEventListener('click', exportChartAsPng);
+    btnExportSvg.addEventListener('click', exportChartAsSvg);
 }
 
 function renderTable() {
@@ -166,6 +171,42 @@ function handleExcelUpload(e) {
         }
     };
     reader.readAsArrayBuffer(file);
+}
+
+function exportChartAsPng() {
+    const canvas = document.getElementById('myChart');
+    const url = canvas.toDataURL('image/png');
+    
+    const link = document.createElement('a');
+    link.download = 'chart-export.png';
+    link.href = url;
+    link.click();
+}
+
+function exportChartAsSvg() {
+    // Get chart canvas dimensions
+    const canvas = document.getElementById('myChart');
+    const width = canvas.width;
+    const height = canvas.height;
+    
+    // Create SVG with embedded chart image
+    const imageData = canvas.toDataURL('image/png');
+    
+    const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <image width="${width}" height="${height}" xlink:href="${imageData}"/>
+</svg>`;
+    
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement('a');
+    link.download = 'chart-export.svg';
+    link.href = url;
+    link.click();
+    
+    // Clean up
+    setTimeout(() => URL.revokeObjectURL(url), 100);
 }
 
 // start and initialize :3
