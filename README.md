@@ -4,11 +4,11 @@ A custom file type viewer and editor for `.ghc` (Graphic Files). This Electron a
 
 ## Features
 
-- **Import Excel**: Import data from `.xlsx` or `.xls` files.
+- **Import Excel**: Import data from `.xlsx` or `.xls` or `.csv' files.
 - **Manual Entry**: Add, edit, and delete data rows manually.
 - **Visualization**: View statistics in a bar chart (powered by Chart.js).
 - **Save/Load**: Save your work as `.ghc` files and load them back later.
-
+- **Export Graph**: You can export bar chart as png and svg files.
 ## Project Details
 
 - **Project Manager**: EnderGamer6112

@@ -13,7 +13,7 @@
                 <button id="btn-load-ghc">Load .ghc</button>
                 <button id="btn-save-ghc">Save .ghc</button>
                 <button id="btn-import-excel">Import Excel</button>
-                <input type="file" id="file-excel" accept=".xlsx, .xls" style="display: none;">
+                <input type="file" id="file-excel" accept=".xlsx, .xls, .csv" style="display: none;">
             </div>
         </header>
 
@@ -38,6 +38,10 @@
 
             <div class="preview-section">
                 <h2>Chart Preview</h2>
+                <div class="chart-controls">
+                    <button id="btn-export-png">Export as PNG</button>
+                    <button id="btn-export-svg">Export as SVG</button>
+                </div>
                 <canvas id="myChart"></canvas>
             </div>
         </main>
